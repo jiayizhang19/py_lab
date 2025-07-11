@@ -2,6 +2,7 @@ import yt_dlp
 import subprocess
 from datetime import datetime
 import os
+from add_bilingual_transcription import *
 
 url = "https://www.youtube.com/watch?v=J1f47XwvQYA&t=311s"
 
@@ -23,6 +24,14 @@ def main():
     # Split into chapters
     split_chapters(video_path, chapters, output_dir)
     print("✅ Done splitting!")
+
+    # Add bilingual transcription to each chapter
+    for file in os.listdir(output_dir):
+        if file.endswith(".mp4") and file != "full_video.mp4":
+            chapter_path = os.path.join(output_dir, file)
+            process_subtitles(chapter_path)
+
+    print("✅ Done! Subtitles added to all chapters.")
 
 
 def download_video(url, output_dir):
