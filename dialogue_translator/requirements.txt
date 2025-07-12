@@ -1,0 +1,10 @@
+scipy
+openai-whisper
+faster-whisper
+pyaudio
+numpy
+keyboard
+edge-tts==7.0.2
+playsound==1.2.2
+googletrans==4.0.0-rc1
+gradio
